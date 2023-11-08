@@ -4,7 +4,7 @@ def feladat1():
     szam = int(input("Kérem adjon meg egy olyan számot ami 200 és 900 között van: "))
     if 200 <= szam <= 920:
         elso_szamjegy = int(str(szam)[0])
-        print("A szám első számjegye: " + elso_szamjegy)
+        print("A szám első számjegye: " + str(elso_szamjegy))
     else:
         print("Hibát! A megadott szám nincs a 200 és 900 között")
 
@@ -21,7 +21,7 @@ def feladat2():
 def feladat3():
     print("3. feladat")
     print("A program számítsa ki egy beolvasott valós szám négyzetgyökét! A program adjon hibaüzenetet, ha a felhasználó negatív számból akar gyököt vonni!")
-    szam = float(input("Adjon meg egy valós számot: "))
+    szam: float = float(input("Adjon meg egy valós számot: "))
     while (szam >= 0):
         szam_gyok = szam ** 0.5
         print(f"A {szam} négyzetgyöke: {szam_gyok}")
@@ -51,3 +51,48 @@ def feladat5():
     while szam2:
         szam1, szam2 = szam2, szam1 % szam2
     print("A két szám legnagyobb közös osztója: " + str(szam1))
+
+def szam_szamjegyek(szam:int):
+    print("szam: ", szam)
+    """Hogy kapjuk meg az utolsó számjegyet?"""
+    while (szam > 9):
+        print("következő számjegy", szam % 10)
+        szam = szam // 10
+        print("Az aktuális szám: ", szam)
+    print("Az utolsó számjegy: ", szam)
+
+def szam_jegyek2(szam: int):
+    szoveg_szam: str = str(szam)
+    i = 0
+    while i < len(szoveg_szam):
+        print(szoveg_szam[i])
+        i += 1
+
+def ermedobas():
+    i: int = 0
+    f_szama: int = 0
+    f_hossz:int = 0
+    max_hossz:int = 0
+    elozo_string_f = False
+    while i < 10:
+        jel: str = input("Adj meg egy jelet (F/I): ")
+        while not((jel == "F") or (jel == "f") or (jel == "I") or (jel == "i")):
+            jel: str = input("Nem jó,  (F/I)-t adj meg: ")
+
+        if (jel == "f" or jel == "F"):
+            f_szama += 1
+            fhossz += 1
+            elozo_string_f = True
+        else:
+            print("Aktuális hossz: ", fhossz)
+            elozo_string_f = False
+            if (max_hossz < f_hossz):
+                max_fhossz = f_hossz
+            f_hossz = 0    
+        i += 1
+
+    print("Aktuális hossz: ", fhossz)
+    if (max_hossz < f_hossz):
+        max_fhossz = f_hossz
+    print("F-ek száma: ", f_szama)
+    print("Maximális hossz: ", max_hossz)
